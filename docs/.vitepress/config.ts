@@ -1,8 +1,8 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  title: 'React Hooks Notes',
-  description: 'Concise notes + runnable examples (Vite + VitePress)',
+  title: 'React Hooks by AKG',
+  description: 'Complete React Hooks learning resource by AKG - Concise notes + runnable examples',
   lang: 'en-US',
   lastUpdated: true,
   cleanUrls: true,
@@ -14,21 +14,21 @@ export default defineConfig({
     ['link', { rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: '180x180' }],
     
     // Enhanced SEO meta tags
-    ['meta', { name: 'keywords', content: 'React, Hooks, useState, useEffect, JavaScript, TypeScript, Frontend, Web Development, Tutorial' }],
-    ['meta', { name: 'author', content: 'Ayush Gupta' }],
+    ['meta', { name: 'keywords', content: 'React, Hooks, useState, useEffect, JavaScript, TypeScript, Frontend, Web Development, Tutorial, AKG' }],
+    ['meta', { name: 'author', content: 'AKG (Ayush Gupta)' }],
     ['meta', { name: 'theme-color', content: '#646cff' }],
     
     // Open Graph / Social Media
-    ['meta', { property: 'og:title', content: 'React Hooks Notes - Complete Learning Resource' }],
-    ['meta', { property: 'og:description', content: 'Master React Hooks with concise notes, practical examples, and interactive demos. Perfect for interviews and learning.' }],
+    ['meta', { property: 'og:title', content: 'React Hooks by AKG - Complete Learning Resource' }],
+    ['meta', { property: 'og:description', content: 'Master React Hooks with AKG\'s comprehensive notes, practical examples, and interactive demos. Perfect for interviews and learning.' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:url', content: 'https://ayush-gupta07.github.io/react-hooks/' }],
     ['meta', { property: 'og:image', content: 'https://ayush-gupta07.github.io/react-hooks/og-image.png' }],
     
     // Twitter Card
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
-    ['meta', { name: 'twitter:title', content: 'React Hooks Notes' }],
-    ['meta', { name: 'twitter:description', content: 'Master React Hooks with practical examples and concise notes' }],
+    ['meta', { name: 'twitter:title', content: 'React Hooks by AKG' }],
+    ['meta', { name: 'twitter:description', content: 'Master React Hooks with AKG\'s practical examples and concise notes' }],
     ['meta', { name: 'twitter:image', content: 'https://ayush-gupta07.github.io/react-hooks/twitter-image.png' }],
     
     // Performance and PWA hints
@@ -40,13 +40,13 @@ export default defineConfig({
   ],
 
   themeConfig: {
-    logo: { src: '/logo.svg', alt: 'React Hooks', width: 24, height: 24 }, 
-    siteTitle: 'React Hooks Notes',
+    logo: { src: '/logo.svg', alt: 'React Hooks by AKG', width: 24, height: 24 }, 
+    siteTitle: 'React Hooks by AKG',
     
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Hooks Guide', link: '/hooks/' },
-      { text: 'GitHub', link: 'https://github.com/ayush-gupta07' }
+      { text: 'AKG', link: 'https://github.com/ayush-gupta07' }
     ],
     
     socialLinks: [
@@ -120,8 +120,8 @@ export default defineConfig({
     
     // Enhanced footer
     footer: {
-      message: 'Made with ❤️ using VitePress • Learn React Hooks with confidence',
-      copyright: '© 2025 Ayush Gupta • Open source learning resource'
+      message: 'Made with ❤️ by AKG using VitePress • Learn React Hooks with confidence',
+      copyright: '© 2025 AKG (Ayush Kumar Gupta) • Open source learning resource'
     },
     
     // Edit link configuration

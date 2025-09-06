@@ -1,13 +1,13 @@
 ---
 layout: home
-title: React Hooks Notes
+title: React Hooks by AKG
 hero:
   name: React Hooks
-  text: "Master Every Hook"
-  tagline: "From basics to advanced patterns • Interactive examples • Interview-ready notes"
+  text: "by AKG"
+  tagline: "Master every React Hook • From basics to advanced patterns • Interactive examples • Interview-ready notes"
   image:
     src: /logo.svg
-    alt: React Hooks
+    alt: React Hooks by AKG
   actions:
     - theme: brand
       text: Start Learning →
