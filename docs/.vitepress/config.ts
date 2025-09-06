@@ -6,6 +6,7 @@ export default defineConfig({
   lang: 'en-US',
   lastUpdated: true,
   cleanUrls: true,
+  base: '/react-hooks/', // This should match your GitHub repository name
   head: [
     // Enhanced favicon and icons
     ['link', { rel: 'icon', href: '/favicon.png', sizes: '32x32' }],
@@ -21,14 +22,14 @@ export default defineConfig({
     ['meta', { property: 'og:title', content: 'React Hooks Notes - Complete Learning Resource' }],
     ['meta', { property: 'og:description', content: 'Master React Hooks with concise notes, practical examples, and interactive demos. Perfect for interviews and learning.' }],
     ['meta', { property: 'og:type', content: 'website' }],
-    ['meta', { property: 'og:url', content: 'https://your-domain.com' }],
-    ['meta', { property: 'og:image', content: 'https://your-domain.com/og-image.png' }],
+    ['meta', { property: 'og:url', content: 'https://ayush-gupta07.github.io/react-hooks/' }],
+    ['meta', { property: 'og:image', content: 'https://ayush-gupta07.github.io/react-hooks/og-image.png' }],
     
     // Twitter Card
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
     ['meta', { name: 'twitter:title', content: 'React Hooks Notes' }],
     ['meta', { name: 'twitter:description', content: 'Master React Hooks with practical examples and concise notes' }],
-    ['meta', { name: 'twitter:image', content: 'https://your-domain.com/twitter-image.png' }],
+    ['meta', { name: 'twitter:image', content: 'https://ayush-gupta07.github.io/react-hooks/twitter-image.png' }],
     
     // Performance and PWA hints
     ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
