@@ -8,14 +8,10 @@
   const [state, setState] = useState(initialValue);
   ```
 
----
-
 ## 🧠 Mental Model
 - Think of state as a **box 📦** inside your component that React watches.  
 - When you update the box using the setter (`setState`), React **repaints the UI** with the new data.  
 - Updating state does **not mutate** the variable directly — it schedules a re-render.  
-
----
 
 ## 🔑 Key Concepts
 1. **Initialization**
@@ -46,8 +42,6 @@
 5. **Multiple State Variables**
    - You can call `useState` multiple times in a component.
    - Each call manages a separate piece of state.
-
----
 
 ## 💻 Code Examples
 
@@ -155,15 +149,11 @@ export default function ExpensiveComponent() {
 3) Subsequent re-renders **do not** re-run the expensive function.  
 4) UI displays the current `value`.
 
----
-
 ## ⚠️ Common Pitfalls & Gotchas
 - ❌ Updating state directly (`count = count + 1`) → won’t re-render.  
 - ❌ Forgetting that updates are async → `console.log(count)` after `setCount` shows old value.  
 - ❌ Overwriting object/array state instead of copying → use spread operator (`{...}` / `[...arr]`).  
 - ❌ Using state inside loops/conditions → hooks must be called in the same order every render.  
-
----
 
 ## ✅ Best Practices
 - Use **descriptive names** (`isOpen`, `todos`, `count`).  
@@ -171,8 +161,6 @@ export default function ExpensiveComponent() {
 - Group related values into objects, but keep unrelated values separate.  
 - Prefer **lazy initialization** for expensive calculations.  
 - Keep state as **minimal as possible** — derive values where you can.  
-
----
 
 ## ❓ Interview Q&A
 
@@ -214,4 +202,3 @@ A: React schedules a re-render. During reconciliation, the Virtual DOM is update
 - **State**: managed within a component, can be updated with `setState`.  
 - **Props**: passed from parent to child, read-only in the child.  
 
----

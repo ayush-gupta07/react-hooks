@@ -9,14 +9,10 @@
   const ref = useRef(initialValue);
   ```
 
----
-
 ## 🧠 Mental Model
 - Think of `useRef` as a **sticky note 📝** attached to your component.  
 - It survives re-renders without causing re-renders itself.  
 - `.current` is like a box where you can store data that React won’t track for rendering.
-
----
 
 ## 🔑 Key Concepts
 1. **Persistent Across Renders**
@@ -33,8 +29,6 @@
 4. **Difference vs `useState`**
    - `useState` triggers a re-render on change.  
    - `useRef` just stores the value silently.
-
----
 
 ## 💻 Code Examples
 
@@ -151,22 +145,16 @@ export default function CounterRef() {
 3) Because ref persists between renders, the count continues across renders.  
 4) Unlike state, updating this value does not cause another render → avoids infinite loops.
 
----
-
 ## ⚠️ Common Pitfalls & Gotchas
 - ❌ Expecting ref updates to trigger re-renders → they don’t.  
 - ❌ Using refs when state is needed (e.g., UI updates).  
 - ❌ Forgetting cleanup when storing things like timers or subscriptions.  
-
----
 
 ## ✅ Best Practices
 - Use refs for **DOM access** and **non-UI mutable values**.  
 - Use state when the UI must update in response to value changes.  
 - Combine with `useEffect` to update refs based on state changes.  
 - Keep refs minimal; don’t overuse them for general data storage.  
-
----
 
 ## ❓ Interview Q&A
 
@@ -203,5 +191,3 @@ A: No. That’s the main difference from state. It only changes the stored value
 
 **Q6. Can you use multiple refs in a component?**  
 A: Yes, you can call `useRef` multiple times for different DOM nodes or values.
-
----

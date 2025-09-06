@@ -9,14 +9,10 @@
   const id = useId();
   ```
 
----
-
 ## 🧠 Mental Model
 - Think of `useId` as a **ticket dispenser 🎟️**: each call returns a unique ticket (ID).  
 - React guarantees uniqueness across components and renders.  
 - IDs stay **stable** for the lifetime of the component.  
-
----
 
 ## 🔑 Key Concepts
 1. **Unique per Component Instance**
@@ -34,8 +30,6 @@
 5. **Prefixes**
    - React IDs look like `:r0:`, `:r1:`, etc.  
    - You can prepend your own prefix (e.g., `id={"username-" + id}`).
-
----
 
 ## 💻 Code Examples
 
@@ -127,22 +121,16 @@ export default function PasswordInput() {
 2) Screen readers announce the hint text when focusing the input.  
 3) Unique IDs prevent collisions when multiple password fields exist.  
 
----
-
 ## ⚠️ Common Pitfalls & Gotchas
 - ❌ Using `Math.random()` or UUIDs in render → IDs change every render, breaking accessibility and hydration.  
 - ❌ Forgetting to associate label and input properly.  
 - ❌ Assuming IDs are globally predictable → they’re unique but not sequential across app boundaries.  
-
----
 
 ## ✅ Best Practices
 - Use `useId` for **accessibility attributes** (`id`, `htmlFor`, `aria-*`).  
 - Prepend a **semantic prefix** (`email-`, `search-`) for clarity.  
 - Use one `useId` per unique field; multiple calls give multiple unique IDs.  
 - Don’t misuse it as a general UUID generator (it’s only for React markup).  
-
----
 
 ## ❓ Interview Q&A
 
@@ -173,5 +161,3 @@ A: No. It’s only for **markup IDs** in React, not for identifying data objects
 
 **Q6. Does `useId` help with hydration mismatches in SSR?**  
 A: Yes. It ensures IDs match between server-rendered HTML and client-side hydration.  
-
----

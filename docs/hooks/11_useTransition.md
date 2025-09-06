@@ -12,14 +12,10 @@
   });
   ```
 
----
-
 ## 🧠 Mental Model
 - Think of React 18 rendering as a **priority scheduler**.  
 - Urgent updates (typing, clicks) should stay **snappy**. Heavy updates (filter, recompute, big tree) can be **deferred**.  
 - `useTransition` = “do this **soon** but **don’t block** the user right now.” While transition work is rendering, `isPending` is `true` so you can show a spinner/skeleton and **keep the previous UI visible** until the new one is ready.
-
----
 
 ## 🔑 Key Concepts
 1. **Urgent vs Non‑Urgent Updates**
@@ -42,8 +38,6 @@
 6. **Transitions vs `useDeferredValue`**
    - `useTransition`: you **schedule** the non‑urgent setState.  
    - `useDeferredValue`: you **derive** a deferred version of a value and render from that.
-
----
 
 ## 💻 Code Examples
 
@@ -204,8 +198,6 @@ export default function MixedUpdates() {
 2) Mirroring (pretend heavy) is done inside the transition.  
 3) Old mirror is shown until the new one is ready; `isPending` exposes progress.
 
----
-
 ## ⚠️ Common Pitfalls & Gotchas
 - ❌ Wrapping **controlled input value** updates in a transition → typing feels laggy. Keep input `setState` **urgent**.  
 - ❌ Calling `startTransition` during render → must be in an **event handler or effect**.  
@@ -213,16 +205,12 @@ export default function MixedUpdates() {
 - ❌ Forgetting loading feedback — use `isPending` to show progress/skeleton.  
 - ❌ Using transitions for everything — they are for **non‑urgent** updates only.
 
----
-
 ## ✅ Best Practices
 - Keep **urgent UI** (typing, clicks) as normal `setState`.  
 - Wrap **derivations / heavy recomputations / big tree switches** in `startTransition`.  
 - Pair with **Suspense** for data fetching so the previous UI stays while new data loads.  
 - Consider **`useDeferredValue`** when you can’t control where state changes, but need a deferred version for rendering.  
 - Profile first; add transitions where they actually improve responsiveness.
-
----
 
 ## ❓ Interview Q&A
 
@@ -253,5 +241,3 @@ A: Inside user event handlers or effects (never during render).
 
 **Q6. Do transitions make code run in a different thread?**  
 A: No. They are still on the main thread; React just schedules work with different priority.
-
----

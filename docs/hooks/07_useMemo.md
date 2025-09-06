@@ -9,15 +9,11 @@
   const memoizedValue = useMemo(() => computeSomething(a, b), [a, b]);
   ```
 
----
-
 ## 🧠 Mental Model
 - Imagine `useMemo` as a **smart cache 🗃️** inside your component.  
 - On re-render, React checks the dependencies:  
   - If unchanged → returns the cached value.  
   - If changed → recalculates and caches the new value.  
-
----
 
 ## 🔑 Key Concepts
 1. **Expensive Calculations**
@@ -31,8 +27,6 @@
 
 4. **Optimization Tool**
    - Don’t prematurely use it everywhere → only where recomputation is costly or reference stability matters.
-
----
 
 ## 💻 Code Examples
 
@@ -153,23 +147,17 @@ export default function Cart() {
 2) `useMemo` ensures recalculation only when `items` changes.  
 3) Adding new item updates `items`, triggers recalculation of `total`.  
 
----
-
 ## ⚠️ Common Pitfalls & Gotchas
 - ❌ Using `useMemo` for trivial computations → adds overhead without benefit.  
 - ❌ Forgetting dependencies → cached value becomes stale.  
 - ❌ Assuming `useMemo` guarantees memoization → React may discard cache in future optimizations.  
 - ❌ Overusing for premature optimization.  
 
----
-
 ## ✅ Best Practices
 - Use it for **expensive calculations** (CPU heavy).  
 - Use it to **stabilize object/array references** passed to children.  
 - Keep dependency arrays accurate.  
 - Avoid using everywhere → measure performance first.  
-
----
 
 ## ❓ Interview Q&A
 
@@ -202,5 +190,3 @@ A: Not directly. It prevents **expensive recalculations** or stabilizes referenc
 
 **Q6. Is `useMemo` guaranteed to memoize?**  
 A: No. It’s a performance hint. React may discard cached values to save memory, but generally reuses them if dependencies didn’t change.
-
----

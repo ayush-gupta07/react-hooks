@@ -9,14 +9,10 @@
   useImperativeHandle(ref, () => handleObject, [deps?]);
   ```
 
----
-
 ## 🧠 Mental Model
 - Think of `ref` as a **remote control 🎮** given to the parent.  
 - By default, the remote points to the DOM node (or class instance).  
 - With `useImperativeHandle`, you **decide what buttons** (methods/properties) appear on the remote.  
-
----
 
 ## 🔑 Key Concepts
 1. **Works with `forwardRef`**
@@ -30,8 +26,6 @@
 
 4. **Escape Hatch**
    - Use it only when declarative props aren’t enough (focus, scroll, animations).
-
----
 
 ## 💻 Code Examples
 
@@ -156,23 +150,17 @@ export default ScrollBox;
 2) Instead of exposing `divRef` directly, only a `scrollToTop()` method is exposed.  
 3) Parent cannot manipulate DOM directly → reduces coupling.  
 
----
-
 ## ⚠️ Common Pitfalls & Gotchas
 - ❌ Forgetting to wrap child with `forwardRef`.  
 - ❌ Exposing entire DOM refs → defeats the purpose of hiding internals.  
 - ❌ Not memoizing functions → causes handle object to change each render.  
 - ❌ Overusing it when declarative props suffice.  
 
----
-
 ## ✅ Best Practices
 - Keep the exposed API **minimal and stable**.  
 - Use `useCallback` for stable functions.  
 - Prefer declarative props; use imperative handle only for focus, scroll, media, or 3rd‑party APIs.  
 - Type the handle (`InputHandle`, `PlayerHandle`) in TypeScript for safety.  
-
----
 
 ## ❓ Interview Q&A
 
@@ -198,5 +186,3 @@ A: Wrap functions in `useCallback` and use a proper dependency array in `useImpe
 
 **Q5. Can you expose values as well as methods?**  
 A: Yes, but methods are safer for dynamic values (they always read the latest state).  
-
----

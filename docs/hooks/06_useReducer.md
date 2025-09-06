@@ -9,14 +9,10 @@
   const [state, dispatch] = useReducer(reducer, initialArg, init?);
   ```
 
----
-
 ## 🧠 Mental Model
 - Think of `useReducer` as a tiny **Redux-like** state container per component.  
 - You **dispatch** an `action` → the **reducer** calculates the **next state** → React re-renders if the state reference changes.  
 - Reducers must be **pure**: no side-effects (no fetch, no timers), no mutation of inputs.
-
----
 
 ## 🔑 Key Concepts
 1. **Reducer**
@@ -45,8 +41,6 @@
 
 6. **Type Safety (TS)**
    - Prefer a **discriminated union** for `Action` and strongly-typed state to catch errors at compile time.
-
----
 
 ## 💻 Code Examples
 
@@ -253,16 +247,12 @@ export function useStore() {
 2) Children call `useStore()` to access `state`/`dispatch` anywhere without prop drilling.  
 3) Dispatching actions updates state in provider → consumers re-render with new values.
 
----
-
 ## ⚠️ Common Pitfalls & Gotchas
 - ❌ **Mutating** state inside reducer (e.g., `state.count++`) → breaks predictability, may not re-render correctly.  
 - ❌ Doing **side-effects** in the reducer (fetching, timers) → reducers must stay pure; use `useEffect` instead.  
 - ❌ Returning the **same object reference** when something actually changed → UI won’t update.  
 - ❌ Creating a new **dispatch wrapper** on every render and passing it via context without memoization → needless re-renders.  
 - ❌ Massive, monolithic reducers → split by domain or use multiple reducers in different components.
-
----
 
 ## ✅ Best Practices
 - Model actions with **clear types & payloads**; use **discriminated unions** in TypeScript.  
@@ -271,8 +261,6 @@ export function useStore() {
 - Use **lazy init** (`init`) for expensive initial state.  
 - Memoize context `value` (`useMemo`) if exposing reducer through context.  
 - When state is simple or independent → `useState` is perfectly fine (don’t overcomplicate).
-
----
 
 ## ❓ Interview Q&A
 
@@ -308,5 +296,3 @@ A: Yes—create multiple `useReducer` instances per component or compose reducer
 
 **Q7. How do you prevent re-renders of consumers when exposing state via context?**  
 A: Memoize the provider `value` and/or split contexts (e.g., separate `StateContext` and `DispatchContext`).
-
----

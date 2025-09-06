@@ -8,15 +8,11 @@
   const value = useContext(MyContext);
   ```
 
----
-
 ## 🧠 Mental Model
 - Imagine React context as a **broadcast station 📡**.  
 - The `Provider` is the broadcaster that sends values.  
 - Any child with `useContext` is a radio tuned in to receive those values.  
 - No need to pass props down manually through multiple layers.
-
----
 
 ## 🔑 Key Concepts
 1. **Creating Context**
@@ -35,8 +31,6 @@
 
 5. **Default Value**
    - Used when no Provider is found higher in the tree.
-
----
 
 ## 💻 Code Examples
 
@@ -174,22 +168,16 @@ export default function App() {
 4) Provider sends updated value down.  
 5) Consumer re-renders with new count.  
 
----
-
 ## ⚠️ Common Pitfalls & Gotchas
 - ❌ Overusing context for all state → can cause unnecessary re-renders.  
 - ❌ Forgetting to wrap with Provider → consumers receive default value.  
 - ❌ Updating context with large objects → all consumers re-render even if they don’t use the updated part.  
-
----
 
 ## ✅ Best Practices
 - Use context for **global state** (auth, theme, language).  
 - Keep context values **minimal** (store only what’s needed).  
 - Consider splitting contexts if values update at different frequencies.  
 - Combine with memoization (`useMemo`) to avoid unnecessary re-renders.  
-
----
 
 ## ❓ Interview Q&A
 
@@ -221,5 +209,3 @@ A: For frequently changing state (like input values), since it causes all consum
 **Q6. Difference between `useContext` and Redux?**  
 - `useContext`: Good for small to medium global state, simple to use, built-in.  
 - Redux: More powerful for complex state, debugging, middlewares, time-travel debugging.  
-
----

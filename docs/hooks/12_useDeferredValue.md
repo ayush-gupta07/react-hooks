@@ -9,15 +9,11 @@
   const deferred = useDeferredValue(value, { timeoutMs? });
   ```
 
----
-
 ## 🧠 Mental Model
 - Think of `useDeferredValue` as a **“lagging mirror”** of some state.  
 - The **original value** updates immediately (for input, cursor, etc.).  
 - The **deferred value** trails behind until React can render it without blocking the UI.  
 - While deferred, you can show a spinner/skeleton and keep the **previous expensive UI** visible.
-
----
 
 ## 🔑 Key Concepts
 1. **Lagging Copy**
@@ -34,8 +30,6 @@
 
 5. **`timeoutMs` (optional)**
    - A hint for how long React may delay updating the deferred value before making it urgent (not a hard guarantee).
-
----
 
 ## 💻 Code Examples
 
@@ -154,23 +148,17 @@ export default function DeferredWithTimeout({ value }: { value: string }) {
 1) React may delay updating `deferred` up to ~200ms under load (not guaranteed).  
 2) While stale, you can show lightweight progress UI.
 
----
-
 ## ⚠️ Common Pitfalls & Gotchas
 - ❌ Expecting `useDeferredValue` to **schedule** updates — it doesn’t; it just returns a deferred copy.  
 - ❌ Using it for **small/light** components — adds complexity without benefit.  
 - ❌ Forgetting memoization (`memo`/`useMemo`) in heavy children — they may still re-render for other prop changes.  
 - ❌ Assuming `timeoutMs` is exact — it’s a hint; React may update earlier or later.
 
----
-
 ## ✅ Best Practices
 - Use for **heavy subtrees** fed by fast-changing inputs (search, filters, visualizations).  
 - Combine with **`React.memo`** and **`useMemo`** for best results.  
 - Keep a simple **staleness indicator**: `value !== deferredValue`.  
 - Prefer **`useTransition`** when you can; reach for `useDeferredValue` when you can’t control state updates or only want part of the UI to lag.
-
----
 
 ## ❓ Interview Q&A
 
@@ -196,5 +184,3 @@ A: Compare `value !== deferredValue` to show a spinner/skeleton.
 
 **Q5. Does `useDeferredValue` reduce CPU cost by itself?**  
 A: No; it spreads work over time. Optimize heavy computations with memoization, virtualization, or workers.
-
----

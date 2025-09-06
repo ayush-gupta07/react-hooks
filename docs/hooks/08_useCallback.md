@@ -8,14 +8,10 @@
   const memoizedFn = useCallback(() => { /* logic */ }, [deps]);
   ```
 
----
-
 ## 🧠 Mental Model
 - Think of `useCallback` as a **function factory** with a memory.  
 - Without it, every render creates a **new function reference** → may trigger unnecessary child re-renders.  
 - With it, React reuses the same function reference if dependencies haven’t changed.
-
----
 
 ## 🔑 Key Concepts
 1. **Function Identity**
@@ -33,8 +29,6 @@
 4. **Relation to `useMemo`**
    - `useCallback(fn, deps)` is equivalent to `useMemo(() => fn, deps)`.  
    - Difference is **semantic intent**: `useMemo` → values, `useCallback` → functions.
-
----
 
 ## 💻 Code Examples
 
@@ -148,8 +142,6 @@ const fn2 = useMemo(() => () => compute(), [deps]);
 - Avoid premature optimization: measure before adding.  
 - Don’t wrap every function in `useCallback` blindly.  
 
----
-
 ## ❓ Interview Q&A
 
 **Q1. Why do we need `useCallback`?**  
@@ -182,5 +174,3 @@ A: When a callback captures outdated state/props due to missing dependencies in 
 
 **Q6. Is `useCallback` just performance optimization?**  
 A: Yes. It doesn’t add new functionality, only helps optimize renders and reference stability.
-
----

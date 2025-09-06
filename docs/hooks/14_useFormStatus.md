@@ -9,14 +9,10 @@
   const { pending, data, method, action } = useFormStatus();
   ```
 
----
-
 ## 🧠 Mental Model
 - Think of `useFormStatus` as a **contextual status checker** 📡 for the form it’s inside.  
 - When a form is submitted, the nearest `useFormStatus` hook re-runs with updated values.  
 - It **does not** provide the entire state of the form — only metadata about the current submission.
-
----
 
 ## 🔑 Key Concepts
 1. **Must be called inside a `<form>` descendant**  
@@ -34,8 +30,6 @@
 
 4. **Combine with `useActionState`**
    - `useActionState` manages state from an action; `useFormStatus` helps with **per-button UI feedback**.
-
----
 
 ## 💻 Code Examples
 
@@ -189,23 +183,17 @@ export default function AccountSettings() {
 2) Each form has its own `useFormStatus` context.  
 3) Submitting one form shows pending only for that form’s button.
 
----
-
 ## ⚠️ Common Pitfalls & Gotchas
 - ❌ Calling it **outside a `<form>`** → always returns idle state.  
 - ❌ Expecting it to return entire form state/validation → it only returns **status metadata**.  
 - ❌ Using one `useFormStatus` across multiple forms → each must have its own context.  
 - ❌ Forgetting accessibility → always announce pending/submitted states (e.g., `aria-live`).
 
----
-
 ## ✅ Best Practices
 - Use `useFormStatus` in **small components** like `SubmitButton` or `StatusLabel`.  
 - Pair with `useActionState` to manage server results and `useOptimistic` for optimistic UI.  
 - Keep feedback **accessible** (aria‑live, role="status").  
 - Keep logic **close to the form**; don’t centralize form statuses unnecessarily.
-
----
 
 ## ❓ Interview Q&A
 
@@ -224,4 +212,3 @@ A: Check the `FormData` returned by `useFormStatus` to see which button submitte
 **Q5. Does `useFormStatus` handle validation?**  
 A: No. Validation should happen in the action (server/client); `useFormStatus` just shows pending/submission info.
 
----

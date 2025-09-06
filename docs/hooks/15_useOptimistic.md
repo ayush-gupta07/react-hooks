@@ -10,14 +10,10 @@
   - `addOptimisticUpdate(patch)` → enqueue an optimistic patch; React derives a new optimistic state via `updateFn(prev, patch)`  
 - Works great with **Server Actions / forms** and pairs naturally with `useActionState` & `useFormStatus` in React 19+.  
 
----
-
 ## 🧠 Mental Model
 - Think of your state as a **ledger**. When the user does something, you immediately **append a provisional entry** (optimistic patch) so the UI feels instant.  
 - When the server confirms, you **reconcile** (keep it) or **roll back** (remove/adjust) based on the real result.  
 - Multiple optimistic patches can be queued; React folds them into the derived `optimisticState`.  
-
----
 
 ## 🔑 Key Concepts
 1. **Base vs Optimistic State**
@@ -38,8 +34,6 @@
 
 5. **Error Handling**
    - If the action fails, show an error and **roll back** (do not apply the failed patch to base state).  
-
----
 
 ## 💻 Code Examples
 
@@ -230,8 +224,6 @@ export default function CursorViewer({ base }: { base: Page }) {
 2) After fetching, we replace base with the real page (items/cursor).  
 3) If fetch fails, base remains, so optimistic cursor rolls back.  
 
----
-
 ## ⚠️ Common Pitfalls & Gotchas
 - ❌ **Mutating** state in `updateFn` → always return new objects/arrays.  
 - ❌ Forgetting to update **base state** when the server confirms success → UI will snap back.  
@@ -239,16 +231,12 @@ export default function CursorViewer({ base }: { base: Page }) {
 - ❌ Overly large patches → keep patch payloads minimal and focused.  
 - ❌ Assuming it replaces caching or syncing — you still need a source of truth (server or store).
 
----
-
 ## ✅ Best Practices
 - Keep `updateFn` **pure and deterministic**.  
 - Use temporary client IDs (`temp-...`) for optimistic entries; reconcile to server IDs when confirmed.  
 - Pair with **`useActionState`** for forms and **`useFormStatus`** for pending indicators.  
 - Surface errors with toasts/status regions and **explain rollbacks**.  
 - Re-fetch or confirm on success for **eventual consistency** in complex flows.  
-
----
 
 ## ❓ Interview Q&A
 
@@ -266,5 +254,3 @@ A: Don’t apply the failed change to base state; when optimistic patches clear,
 
 **Q5. Can multiple optimistic updates be queued?**  
 A: Yes; they’re applied in order to produce the optimistic projection.
-
----

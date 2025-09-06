@@ -27,7 +27,8 @@
 
   /* Layout */
   --vp-sidebar-width: 260px;
-  
+  --vp-sidebar-bg-color: white;
+
   /* Card System */
   --card-bg: var(--vp-c-bg-soft);
   --card-border: rgba(100, 100, 100, 0.12);
@@ -431,4 +432,9 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--vp-c-brand-1);
+}
+
+.VPSidebar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--card-border) var(--vp-c-bg-alt);
 }

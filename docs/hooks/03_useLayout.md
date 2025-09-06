@@ -13,14 +13,10 @@
   }, [dependencies]);
   ```
 
----
-
 ## 🧠 Mental Model
 - Think of `useEffect` as running **after painting** 🎨 (async, non-blocking).  
 - Think of `useLayoutEffect` as running **before painting** 🛠 (blocking).  
 - Use it only when the DOM **measurement or mutation** must be done before the browser visually updates.
-
----
 
 ## 🔑 Key Concepts
 1. **Execution Timing**
@@ -37,8 +33,6 @@
 
 4. **Performance Warning**
    - Blocks the paint process → overuse may cause performance issues.
-
----
 
 ## 💻 Code Examples
 
@@ -111,22 +105,16 @@ export default function Comparison() {
 3) Browser paints the UI.  
 4) `useEffect` logs **after** paint.  
 
----
-
 ## ⚠️ Common Pitfalls & Gotchas
 - ❌ Overusing `useLayoutEffect` → blocks painting, can cause jank.  
 - ❌ Using it when `useEffect` is enough.  
 - ❌ Forgetting cleanup when adding DOM listeners or styles.  
-
----
 
 ## ✅ Best Practices
 - Prefer `useEffect` for most side effects.  
 - Use `useLayoutEffect` **only when DOM measurements/updates must happen before paint**.  
 - Keep logic inside `useLayoutEffect` minimal to avoid blocking rendering.  
 - Clean up listeners/timers to avoid memory leaks.  
-
----
 
 ## ❓ Interview Q&A
 
@@ -154,5 +142,3 @@ A: Yes, just like `useEffect`. They run in the order they are declared.
 
 **Q5. Is `useLayoutEffect` SSR-friendly?**  
 A: No. On the server, React will warn you to use `useEffect` instead because layout-related APIs (like `getBoundingClientRect`) are not available on the server.  
-
----

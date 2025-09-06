@@ -13,14 +13,10 @@
   }, [dependencies]);
   ```
 
----
-
 ## 🧠 Mental Model
 - Think of `useEffect` as React’s way of saying:  
   “Run this code **after the render** and again whenever dependencies change.”  
 - Cleanup runs like housekeeping 🧹 before the effect re-runs or when the component unmounts.
-
----
 
 ## 🔑 Key Concepts
 1. **Default Behavior**
@@ -42,8 +38,6 @@
 5. **Execution Order**
    - Effects run after the DOM is updated.  
    - Cleanup runs before next effect execution.
-
----
 
 ## 💻 Code Examples
 
@@ -148,15 +142,11 @@ export default function Users() {
 3) When the data arrives, `setUsers` updates state → triggers a re-render.  
 4) The list renders with the fetched users.
 
----
-
 ## ⚠️ Common Pitfalls & Gotchas
 - ❌ Forgetting the dependency array → effect runs after every render (may cause infinite loops).  
 - ❌ Incorrect dependencies → stale data or missed updates.  
 - ❌ Running expensive operations without memoization.  
 - ❌ Forgetting cleanup → memory leaks from unremoved listeners/timers.  
-
----
 
 ## ✅ Best Practices
 - Always declare dependencies explicitly in the array.  
@@ -164,8 +154,6 @@ export default function Users() {
 - Keep effects focused — one effect per concern.  
 - Use cleanup to prevent leaks.  
 - Use libraries like React Query for complex data fetching.  
-
----
 
 ## ❓ Interview Q&A
 
@@ -204,5 +192,3 @@ A: Ensure dependency arrays are correct. Don’t include non-stable references (
 
 **Q7. Can we use multiple `useEffect` hooks in a component?**  
 A: Yes, React encourages splitting unrelated logic into separate effects.  
-
----

@@ -5,14 +5,10 @@
 - Custom hooks **share logic, not state**. Each use creates an **independent instance**.  
 - Great for **abstracting effects, subscriptions, forms, fetching**, and **cross‑cutting concerns** (analytics, focus, media).
 
----
-
 ## 🧠 Mental Model
 - Think of custom hooks as **lego bricks of behavior**.  
 - Components remain small and declarative; hooks do the imperative work (fetch, subscribe, measure, cache).  
 - Hooks must follow the **Rules of Hooks**: call at the **top level**, not inside loops/conditions; **only call hooks** from React functions (components or other hooks).
-
----
 
 ## 🔑 Key Concepts
 1. **`use` Prefix & Return Shape**
@@ -36,8 +32,6 @@
 
 7. **TypeScript Ergonomics**
    - Export clear types; prefer **tuples** for simple hooks and **objects** for multiple return values.
-
----
 
 ## 💻 Code Examples
 
@@ -225,16 +219,12 @@ export function useAuth() {
 - Mock **browser APIs** (e.g., `localStorage`) and **fetch**.  
 - Test **effects & cleanups** (e.g., event listeners removed on unmount).
 
----
-
 ## ⚠️ Common Pitfalls & Gotchas
 - ❌ Violating the **Rules of Hooks** (calling conditionally/in loops).  
 - ❌ Leaking subscriptions/timers by forgetting **cleanup**.  
 - ❌ Overly broad dependency arrays in effects → unnecessary work; too narrow → stale closures.  
 - ❌ Returning unstable function references; use `useCallback`/`useMemo` when needed.  
 - ❌ Conflating UI with logic: hooks should be **UI-agnostic** and reusable.
-
----
 
 ## ✅ Best Practices
 - Name hooks with a clear **verb or domain** (`useOnlineStatus`, `useHover`, `useIntersection`).  
@@ -243,8 +233,6 @@ export function useAuth() {
 - Provide **sensible defaults** and `enabled` flags to pause behavior.  
 - Consider **SSR checks** for browser-only APIs.  
 - Prefer **TypeScript** for DX and safety.
-
----
 
 ## ❓ Interview Q&A
 
@@ -265,5 +253,3 @@ A: Return a function from `useEffect`/`useLayoutEffect` to remove listeners/time
 
 **Q6. How to design the return API of a hook?**  
 A: Prefer a minimal surface; use tuples for simple patterns and objects for multiple properties. Document the contract.
-
----

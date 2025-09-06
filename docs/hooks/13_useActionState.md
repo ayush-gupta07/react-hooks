@@ -7,29 +7,23 @@
   const [state, formAction, isPending] = useActionState(action, initialState, permalink?);
   ```
 - The **action function** gets an extra first argument: the **previous (or initial) state**, followed by the usual action args (e.g., `FormData`).  
-- Use it with `<form action={formAction}>` or `<button formAction={formAction}>`. It also works when you **call the action manually** inside `startTransition`. citeturn1view0
-
----
+- Use it with `<form action={formAction}>` or `<button formAction={formAction}>`. It also works when you **call the action manually** inside `startTransition`. 
 
 ## 🧠 Mental Model
 - Think of `useActionState` as a **stateful wrapper around a form action**.  
 - Each submit calls your action → returns a value → that value becomes the **new local state**.  
 - While the action is running, `isPending` is `true` so you can show **progress UI**.  
-- With Server Functions (RSC/Next.js), the returned state can show **even before hydration**; without RSC it behaves like regular local state. citeturn1view0
-
----
+- With Server Functions (RSC/Next.js), the returned state can show **even before hydration**; without RSC it behaves like regular local state. 
 
 ## 🔑 Key Concepts
 1. **Return tuple**
-   - `[state, formAction, isPending]` → current state, the action you pass to the form, and a pending flag. citeturn1view0
+   - `[state, formAction, isPending]` → current state, the action you pass to the form, and a pending flag. 
 2. **Action signature**
-   - When wrapped by `useActionState`, your function receives `(previousState, ...args)` (e.g., `(prev, formData)`). The submitted data shifts to **second** argument. citeturn1view0
+   - When wrapped by `useActionState`, your function receives `(previousState, ...args)` (e.g., `(prev, formData)`). The submitted data shifts to **second** argument. 
 3. **Initial State**
-   - `initialState` is used until the first successful submit; thereafter `state` comes from the action’s return value. citeturn1view0
+   - `initialState` is used until the first successful submit; thereafter `state` comes from the action’s return value. 
 4. **Permalink (optional)**
-   - For progressive enhancement with Server Functions: if JS isn’t loaded yet, the browser navigates to the `permalink` URL; React passes state through once hydrated. citeturn1view0
-
----
+   - For progressive enhancement with Server Functions: if JS isn’t loaded yet, the browser navigates to the `permalink` URL; React passes state through once hydrated. 
 
 ## 💻 Code Examples
 
@@ -60,7 +54,7 @@ export default function CounterForm() {
 1) First render: `count = 0` (initial).  
 2) On submit, React calls `increment(prevState=0, formData)` and sets `isPending = true`.  
 3) The returned value (`1`) becomes the new `count`.  
-4) `isPending` flips back to `false`; the UI re-renders with the latest count. citeturn1view0
+4) `isPending` flips back to `false`; the UI re-renders with the latest count. 
 
 ---
 
@@ -105,7 +99,7 @@ export default function ProfileForm() {
 **How it works (step‑by‑step):**
 1) The form submits to `action` (the wrapper React returned).  
 2) `save(prev, formData)` runs and **returns structured state** (success + message).  
-3) The returned object becomes the new `state` and is rendered; `isPending` covers the busy time. citeturn1view0
+3) The returned object becomes the new `state` and is rendered; `isPending` covers the busy time. 
 
 ---
 
@@ -147,7 +141,7 @@ export default function Signup() {
 **How it works (step‑by‑step):**
 1) The **server function** `createUser(prev, formData)` runs on submit (signature includes `prev`).  
 2) Its **return value** is streamed back and shown as `state` (even before hydration).  
-3) The client component renders `state.message`; `isPending` reflects the request status. citeturn0search6turn1view0
+3) The client component renders `state.message`; `isPending` reflects the request status. 
 
 ---
 
@@ -187,41 +181,33 @@ export default function Remover() {
 **How it works (step‑by‑step):**
 1) `useActionState` returns a callable `action`.  
 2) We build a `FormData` and call it inside `startTransition` for non‑urgent updates.  
-3) The returned array becomes the new `items`; `isPending` covers progress. citeturn1view0
-
----
+3) The returned array becomes the new `items`; `isPending` covers progress. 
 
 ## ⚠️ Common Pitfalls & Gotchas
-- ❌ **Wrong action signature** when wrapped: remember `prevState` is **first** and submitted data moves to **second** argument. citeturn1view0  
-- ❌ Expecting it to work without the form wrapper/action prop: pass `formAction` to `<form>` or a `<button>` with `formAction`. citeturn1view0  
-- ❌ Ignoring progressive enhancement on dynamic pages: if you use `permalink`, ensure the same form/action exists at the destination. citeturn1view0  
+- ❌ **Wrong action signature** when wrapped: remember `prevState` is **first** and submitted data moves to **second** argument.   
+- ❌ Expecting it to work without the form wrapper/action prop: pass `formAction` to `<form>` or a `<button>` with `formAction`.   
+- ❌ Ignoring progressive enhancement on dynamic pages: if you use `permalink`, ensure the same form/action exists at the destination.   
 - ❌ Treating it as global state: `useActionState` updates **component-local** state; for shared state, lift or use context.  
 
----
-
 ## ✅ Best Practices
-- Return **structured state** (e.g., `{ok, message, data}`) to simplify UI rendering after submit. citeturn1view0  
-- Combine with **`useFormStatus`** for per-button pending/disabled states inside forms, and with **`useOptimistic`** for optimistic UI while waiting. citeturn1view0  
-- Validate on the **server** for security; surface errors by returning them via state (or throwing and catching if your framework supports it). citeturn0search6  
-- For big updates, consider wrapping manual calls in a **transition** (`startTransition`) to keep the UI responsive. citeturn1view0
-
----
+- Return **structured state** (e.g., `{ok, message, data}`) to simplify UI rendering after submit.   
+- Combine with **`useFormStatus`** for per-button pending/disabled states inside forms, and with **`useOptimistic`** for optimistic UI while waiting.   
+- Validate on the **server** for security; surface errors by returning them via state (or throwing and catching if your framework supports it). 
+- For big updates, consider wrapping manual calls in a **transition** (`startTransition`) to keep the UI responsive. 
 
 ## ❓ Interview Q&A
 
 **Q1. What does `useActionState` return and how do you use it?**  
-A: `[state, formAction, isPending]`. You pass `formAction` to `<form action={…}>` or `<button formAction={…}>`, render `state` from the last submit, and show feedback with `isPending`. citeturn1view0
+A: `[state, formAction, isPending]`. You pass `formAction` to `<form action={…}>` or `<button formAction={…}>`, render `state` from the last submit, and show feedback with `isPending`. 
 
 **Q2. How does the action’s function signature change with `useActionState`?**  
-A: It becomes `(previousState, ...args)` (e.g., `(prev, formData)`), so the submitted data is the **second** parameter. citeturn1view0
+A: It becomes `(previousState, ...args)` (e.g., `(prev, formData)`), so the submitted data is the **second** parameter. 
 
 **Q3. What’s the purpose of the optional `permalink` argument?**  
-A: It supports **progressive enhancement** on dynamic pages: before JS loads, the browser can navigate to a stable URL while React preserves state across hydration. citeturn1view0
+A: It supports **progressive enhancement** on dynamic pages: before JS loads, the browser can navigate to a stable URL while React preserves state across hydration. 
 
 **Q4. How is `useActionState` different from `useTransition` or `useDeferredValue`?**  
 A: `useActionState` wires **form submit results** into local state. `useTransition` changes **priority** of updates; `useDeferredValue` renders from a **lagging copy** of a value.
 
 **Q5. Do you need React Server Components to use `useActionState`?**  
-A: No. Without RSC it behaves like local state; with RSC it can render server-returned state **before hydration**. citeturn1view0
-
----
+A: No. Without RSC it behaves like local state; with RSC it can render server-returned state **before hydration**. 
