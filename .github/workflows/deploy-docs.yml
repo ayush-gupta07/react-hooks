@@ -2,7 +2,7 @@ name: Deploy VitePress site to GitHub Pages
 
 on:
   push:
-    branches: [ main ]  # or your default branch
+    branches: [ main ]
   workflow_dispatch:
 
 permissions:
@@ -25,10 +25,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
+          # No cache here (avoids lockfile requirement)
 
       - name: Install deps
-        run: npm ci
+        run: npm install --no-audit --no-fund
 
       - name: Build VitePress site
         run: npm run docs:build
