@@ -27,7 +27,6 @@
 
   /* Layout */
   --vp-sidebar-width: 260px;
-  --vp-sidebar-bg-color: white;
 
   /* Card System */
   --card-bg: var(--vp-c-bg-soft);
