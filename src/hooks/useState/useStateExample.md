@@ -128,12 +128,3 @@ By the end, you'll have hands-on practice with **all scenarios where `useState` 
 - When you need to derive data from other sources (props, memoization) → use `useMemo` instead of duplicating state.  
 
 ---
-
-## 🏆 Next Steps
-
-1. Open [`UseState.tsx`](./UseState.tsx).  
-2. Uncomment examples one by one to practice.  
-3. Observe re-renders, console logs, and experiment.  
-4. Compare your intuition with actual React behavior.  
-
-> 💡 Mastering these patterns will make hooks like `useReducer`, `useEffect`, and `useRef` much easier to learn — since they often build on these foundations.
