@@ -9,7 +9,7 @@
 import BasicLog from "./examples/01_BasicLog";
 import EffectCleanup from "./examples/02_EffectCleanup";
 import DependencyArray from "./examples/03_DependencyArray";
-// import WindowResizeListener from "./examples/WindowResizeListener";
+import WindowResizeListener from "./examples/04_WindowResizeListner";
 // import FetchData from "./examples/FetchData";
 // import MultipleEffects from "./examples/MultipleEffects";
 // import EffectVsLayoutEffect from "./examples/EffectVsLayoutEffect";
@@ -51,9 +51,9 @@ export default function UseEffectShowcase() {
         <DependencyArray />
       </Demo>
 
-      {/* <Demo title="4) WindowResizeListener — global event subscription">
+      <Demo title="4) WindowResizeListener — global event subscription">
         <WindowResizeListener />
-      </Demo> */}
+      </Demo>
 
       {/* <Demo title="5) FetchData — async request with cleanup">
         <FetchData />
