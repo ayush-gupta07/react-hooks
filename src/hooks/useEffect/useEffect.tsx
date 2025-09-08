@@ -6,7 +6,7 @@
  * Each demo is isolated in its own file inside `examples/`.
  */
 
-// import BasicLog from "./examples/BasicLog";
+import BasicLog from "./examples/01_BasicLog";
 // import EffectCleanup from "./examples/EffectCleanup";
 // import DependencyArray from "./examples/DependencyArray";
 // import WindowResizeListener from "./examples/WindowResizeListener";
@@ -39,43 +39,43 @@ export default function UseEffectShowcase() {
     <section>
       <h1>useEffect — Curated Examples</h1>
 
-      {/* <Demo title="1) BasicLog — log after render">
+      <Demo title="1) BasicLog — log after render">
         <BasicLog />
       </Demo>
 
-      <Demo title="2) EffectCleanup — cleanup on unmount">
+      {/* <Demo title="2) EffectCleanup — cleanup on unmount">
         <EffectCleanup />
-      </Demo>
+      </Demo> */}
 
-      <Demo title="3) DependencyArray — [] vs deps vs no deps">
+      {/* <Demo title="3) DependencyArray — [] vs deps vs no deps">
         <DependencyArray />
-      </Demo>
+      </Demo> */}
 
-      <Demo title="4) WindowResizeListener — global event subscription">
+      {/* <Demo title="4) WindowResizeListener — global event subscription">
         <WindowResizeListener />
-      </Demo>
+      </Demo> */}
 
-      <Demo title="5) FetchData — async request with cleanup">
+      {/* <Demo title="5) FetchData — async request with cleanup">
         <FetchData />
-      </Demo>
-
+      </Demo> */}
+{/* 
       <Demo title="6) MultipleEffects — separate concerns">
         <MultipleEffects />
-      </Demo>
+      </Demo> */}
 
-      <Demo title="7) EffectVsLayoutEffect — timing differences">
+      {/* <Demo title="7) EffectVsLayoutEffect — timing differences">
         <EffectVsLayoutEffect />
-      </Demo>
+      </Demo> */}
 
-      <Demo title="8) DebouncedInput — debounce with setTimeout">
+      {/* <Demo title="8) DebouncedInput — debounce with setTimeout">
         <DebouncedInput />
-      </Demo>
+      </Demo> */}
 
-      <Demo title="9) IntervalCounter — timer with cleanup">
+      {/* <Demo title="9) IntervalCounter — timer with cleanup">
         <IntervalCounter />
-      </Demo>
+      </Demo> */}
 
-      <Demo title="10) RaceConditionFix — async abort pattern">
+      {/* <Demo title="10) RaceConditionFix — async abort pattern">
         <RaceConditionFix />
       </Demo> */}
     </section>
