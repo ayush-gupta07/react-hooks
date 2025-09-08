@@ -7,7 +7,7 @@
  */
 
 import BasicLog from "./examples/01_BasicLog";
-// import EffectCleanup from "./examples/EffectCleanup";
+import EffectCleanup from "./examples/02_EffectCleanup";
 // import DependencyArray from "./examples/DependencyArray";
 // import WindowResizeListener from "./examples/WindowResizeListener";
 // import FetchData from "./examples/FetchData";
@@ -43,9 +43,9 @@ export default function UseEffectShowcase() {
         <BasicLog />
       </Demo>
 
-      {/* <Demo title="2) EffectCleanup — cleanup on unmount">
+      <Demo title="2) EffectCleanup — cleanup on unmount">
         <EffectCleanup />
-      </Demo> */}
+      </Demo>
 
       {/* <Demo title="3) DependencyArray — [] vs deps vs no deps">
         <DependencyArray />
